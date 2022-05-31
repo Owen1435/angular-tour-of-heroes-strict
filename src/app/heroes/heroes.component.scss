@@ -52,3 +52,20 @@
   margin-right: .8em;
   border-radius: 4px 0 0 4px;
 }
+
+.add-button {
+  padding: .4rem 1.5rem;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.add-button:hover {
+  color: white;
+  background-color: #42545C;
+}
+
+input {
+  padding: .5rem;
+  margin: 1rem .5rem 1rem 0;
+  box-sizing: border-box;
+}

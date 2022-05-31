@@ -48,6 +48,13 @@ export class HeroService implements Resolve<any> {
     );
   }
 
+  addHero(hero: Hero): Observable<Hero> {
+    return this.http.post<Hero>(this.heroesUrl, hero, this.httpOptions).pipe(
+      tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.id}`)),
+      catchError(this.handleError<Hero>('addHero'))
+    );
+  }
+
   // getHeroes(): Observable<Hero[]> {
   //   const heroes = of(HEROES);
   //   this.messageService.add('HeroService: fetched heroes');
