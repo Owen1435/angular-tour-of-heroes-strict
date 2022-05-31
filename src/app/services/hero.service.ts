@@ -19,11 +19,8 @@ export class HeroService implements Resolve<any> {
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
-
-  private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
-  }
+    private messageService: MessageService
+  ) { }
 
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
@@ -63,6 +60,18 @@ export class HeroService implements Resolve<any> {
     );
   }
 
+  searchHeroes(term: string): Observable<Hero[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
+      tap(x => x.length ?
+        this.log(`found heroes matching "${term}"`) :
+        this.log(`no heroes matching "${term}"`)),
+      catchError(this.handleError<Hero[]>('searchHeroes', []))
+    );
+  }
+
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -76,5 +85,9 @@ export class HeroService implements Resolve<any> {
       this.log(`${operation} failed: ${error.message}`);
       return of(result as T);
     };
+  }
+
+  private log(message: string) {
+    this.messageService.add(`HeroService: ${message}`);
   }
 }
