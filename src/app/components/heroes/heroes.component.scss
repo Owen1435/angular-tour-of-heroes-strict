@@ -8,6 +8,13 @@
 .heroes li {
   position: relative;
   cursor: pointer;
+  margin: .5em;
+  background-color: #EEE;
+  border-radius: 4px;
+
+  &.selected {
+    background-color: rgba(37, 37, 255, 0.43);
+  }
 }
 
 .heroes li:hover {
@@ -17,8 +24,6 @@
 .heroes a {
   color: #333;
   text-decoration: none;
-  background-color: #EEE;
-  margin: .5em;
   padding: .3em 0;
   height: 1.6em;
   border-radius: 4px;
@@ -72,7 +77,7 @@ input {
 
 button.delete {
   position: absolute;
-  left: 210px;
+  left: 190px;
   top: 5px;
   background-color: white;
   color:  #525252;

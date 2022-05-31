@@ -10,6 +10,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class HeroesComponent implements OnInit {
   public heroes: Hero[] = [];
+  public selectedId: number = 0;
 
   constructor(
     private heroService: HeroService,
@@ -20,6 +21,8 @@ export class HeroesComponent implements OnInit {
     this.route.data.subscribe((response: any) => {
       this.heroes = response.heroes;
     })
+
+    this.route.paramMap.subscribe(params => {this.selectedId = Number(params.get('id')); console.log(this.selectedId);})
   }
 
   add(name: string): void {
