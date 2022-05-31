@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroService } from '../hero.service';
+import { HeroService } from '../services/hero.service';
 import { Hero } from '../model/hero';
 import {ActivatedRoute} from "@angular/router";
 
@@ -17,16 +17,10 @@ export class HeroesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.getHeroes();
     this.route.data.subscribe((response: any) => {
       this.heroes = response.heroes;
     })
   }
-
-  // getHeroes(): void {
-  //   this.heroService.getHeroes()
-  //     .subscribe(heroes => this.heroes = heroes);
-  // }
 
   add(name: string): void {
     name = name.trim();

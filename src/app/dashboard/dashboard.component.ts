@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroService } from '../hero.service';
+import { HeroService } from '../services/hero.service';
 import { Hero } from '../model/hero';
 import {ActivatedRoute} from "@angular/router";
 
@@ -17,14 +17,8 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.getHeroes();
     this.route.data.subscribe((response: any) => {
       this.heroes = response.heroes.slice(1, 5);
     })
   }
-
-  // getHeroes(): void {
-  //   this.heroService.getHeroes()
-  //     .subscribe(heroes => this.heroes = heroes.slice(1, 5));
-  // }
 }
