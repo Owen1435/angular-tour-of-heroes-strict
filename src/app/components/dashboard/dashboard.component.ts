@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroService } from '../services/hero.service';
-import { Hero } from '../model/hero';
+import { HeroService } from '../../services/hero/hero.service';
+import { Hero } from '../../model/hero';
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -9,7 +9,7 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  heroes: Hero[] = [];
+  public heroes: Hero[] = [];
 
   constructor(
     private heroService: HeroService,

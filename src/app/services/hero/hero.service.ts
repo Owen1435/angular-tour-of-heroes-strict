@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
-import { Hero } from '../model/hero';
-import {MessageService} from "./message.service";
+import { Hero } from '../../model/hero';
+import {MessageService} from "../message/message.service";
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
@@ -11,7 +11,6 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HeroService implements Resolve<any> {
-
   private heroesUrl = 'api/heroes';
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
