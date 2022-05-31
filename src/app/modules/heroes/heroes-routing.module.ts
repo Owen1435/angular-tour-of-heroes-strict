@@ -7,8 +7,8 @@ import {HeroesResolver} from "../../components/heroes/heroes.resolver";
 import {DashboardComponent} from "../../components/dashboard/dashboard.component";
 
 const routes: Routes = [
-  { path: 'detail/:id', component: HeroDetailComponent, resolve: { hero: HeroService } },
-  { path: 'heroes', component: HeroesComponent, resolve: { heroes: HeroesResolver } },
+  { path: 'hero/:id', component: HeroDetailComponent, resolve: { hero: HeroService }, data: { animation: 'hero' }  },
+  { path: 'heroes', component: HeroesComponent, resolve: { heroes: HeroesResolver }, data: { animation: 'heroes' }  },
   { path: 'dashboard', component: DashboardComponent, resolve: { heroes: HeroesResolver } },
 ];
 
