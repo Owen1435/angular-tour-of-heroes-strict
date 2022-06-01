@@ -11,6 +11,7 @@ import { InMemoryDataService } from './services/in-memory-data/in-memory-data.se
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HeroesModule } from './modules/heroes/heroes.module';
 import { MessagesComponent } from './components/messages/messages.component';
+import {CrisisCenterModule} from "./modules/crisis-center/crisis-center.module";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MessagesComponent } from './components/messages/messages.component';
   ],
   imports: [
     HeroesModule,
+    CrisisCenterModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
