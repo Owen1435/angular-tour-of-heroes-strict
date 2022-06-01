@@ -12,12 +12,14 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HeroesModule } from './modules/heroes/heroes.module';
 import { MessagesComponent } from './components/messages/messages.component';
 import {CrisisCenterModule} from "./modules/crisis-center/crisis-center.module";
+import { ComposeMessageComponent } from './components/compose-message/compose-message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
     MessagesComponent,
+    ComposeMessageComponent,
   ],
   imports: [
     HeroesModule,
