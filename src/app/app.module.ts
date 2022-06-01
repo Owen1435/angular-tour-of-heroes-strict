@@ -14,6 +14,7 @@ import { MessagesComponent } from './components/messages/messages.component';
 import {CrisisCenterModule} from "./modules/crisis-center/crisis-center.module";
 import { ComposeMessageComponent } from './components/compose-message/compose-message.component';
 import {AdminModule} from "./modules/admin/admin.module";
+import {AuthModule} from "./modules/auth/auth.module";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {AdminModule} from "./modules/admin/admin.module";
     HeroesModule,
     CrisisCenterModule,
     AdminModule,
+    AuthModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,

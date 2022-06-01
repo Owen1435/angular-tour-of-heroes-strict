@@ -4,11 +4,13 @@ import {AdminComponent} from "../../components/admin/admin.component";
 import {ManageCrisesComponent} from "../../components/manage-crises/manage-crises.component";
 import {ManageHeroesComponent} from "../../components/manage-heroes/manage-heroes.component";
 import {AdminDashboardComponent} from "../../components/admin-dashboard/admin-dashboard.component";
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const adminRoutes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
