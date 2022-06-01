@@ -1,9 +1,10 @@
 <h1>{{title}}</h1>
-<a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
 <nav>
   <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
   <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
   <a routerLink="/crisis-center" routerLinkActive="active">Crisis</a>
+  <a routerLink="/admin" routerLinkActive="active">Admin</a>
+  <a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
 </nav>
 <div [@routeAnimation]="getAnimationData()">
   <router-outlet></router-outlet>

@@ -13,6 +13,7 @@ import { HeroesModule } from './modules/heroes/heroes.module';
 import { MessagesComponent } from './components/messages/messages.component';
 import {CrisisCenterModule} from "./modules/crisis-center/crisis-center.module";
 import { ComposeMessageComponent } from './components/compose-message/compose-message.component';
+import {AdminModule} from "./modules/admin/admin.module";
 
 @NgModule({
   declarations: [
@@ -24,14 +25,16 @@ import { ComposeMessageComponent } from './components/compose-message/compose-me
   imports: [
     HeroesModule,
     CrisisCenterModule,
+    AdminModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService,
+      { dataEncapsulation: false }
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent]
