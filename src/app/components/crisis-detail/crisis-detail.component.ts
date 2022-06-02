@@ -21,11 +21,12 @@ export class CrisisDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap
-      .subscribe(params => {
-        this.crisis = CRISES.find(crisis => crisis.id === Number(params.get('id')))
-        this.editName = this.crisis?.name || ''
-      })
+    this.route.data
+      .subscribe(data => {
+        const crisis: Crisis = data['crisis'];
+        this.editName = crisis.name;
+        this.crisis = crisis;
+      });
   }
 
   goBack(): void {
