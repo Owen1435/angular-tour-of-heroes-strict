@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {NavigationExtras, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -17,7 +17,6 @@ export class LoginComponent {
   getMessage() {
     return 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
   }
-
   login() {
     this.message = 'Trying to log in ...';
 
@@ -25,7 +24,12 @@ export class LoginComponent {
       this.message = this.getMessage();
       if (this.authService.isLoggedIn) {
         const redirectUrl = '/admin';
-        this.router.navigate([redirectUrl]);
+        const navigationExtras: NavigationExtras = {
+          queryParamsHandling: 'preserve',
+          preserveFragment: true
+        };
+
+        this.router.navigate([redirectUrl], navigationExtras);
       }
     });
   }
