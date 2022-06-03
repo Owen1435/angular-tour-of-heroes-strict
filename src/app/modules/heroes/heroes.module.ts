@@ -7,7 +7,7 @@ import {HeroDetailComponent} from "../../components/hero-detail/hero-detail.comp
 import {DashboardComponent} from "../../components/dashboard/dashboard.component";
 import {HeroSearchComponent} from "../../components/hero-search/hero-search.component";
 import {FormsModule} from "@angular/forms";
-import {HeroFormComponent} from "../../hero-form/hero-form.component";
+import {HeroFormComponent} from "../../components/hero-form/hero-form.component";
 
 @NgModule({
   declarations: [

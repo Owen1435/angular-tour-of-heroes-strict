@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
-import { Hero } from '../model/hero';
-import {HeroService} from "../services/hero/hero.service";
+import { Hero } from '../../model/hero';
+import {HeroService} from "../../services/hero/hero.service";
 import {Router} from "@angular/router";
 
 
