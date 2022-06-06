@@ -12,7 +12,8 @@ h2, h3 {
   font-weight: lighter;
 }
 body {
-  margin: 2em;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 body, input[type="text"], button {
   color: #333;

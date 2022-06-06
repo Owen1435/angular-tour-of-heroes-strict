@@ -22,7 +22,6 @@ export class HeroFormComponent {
 
   onSubmit(form: any) {
     console.log(form)
-
     if (this.hero) {
       this.heroService.updateHero(this.hero)
         .subscribe(() => this.goBack());

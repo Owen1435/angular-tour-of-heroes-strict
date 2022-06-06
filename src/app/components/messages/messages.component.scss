@@ -3,6 +3,7 @@ h2 {
   color: #A80000;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
+  display: inline-block;
 }
 
 .clear {
@@ -16,4 +17,12 @@ h2 {
 .clear:hover {
   color: white;
   background-color: #42545C;
+}
+
+.messages {
+  height: 150px;
+  overflow: auto;
+  background-color: #efefef;
+  padding: 5px;
+  border-radius: 5px;
 }
