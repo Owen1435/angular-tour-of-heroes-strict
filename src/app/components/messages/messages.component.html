@@ -1,8 +1,12 @@
 <div *ngIf="messageService.messages.length">
 
-  <h2>Messages</h2>
-  <button type="button" class="clear"
-          (click)="messageService.clear()">Clear messages</button>
+  <div class="header">
+    <h2>Messages</h2>
+    <button mat-button color="warn" type="button" class="clear" (click)="messageService.clear()">
+      Clear
+      <mat-icon aria-hidden="false" aria-label="Example home icon">close</mat-icon>
+    </button>
+  </div>
   <div class="messages">
     <div *ngFor='let message of messageService.messages'>
       <div>{{message}}</div>

@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import { Observable } from 'rxjs/internal/Observable';
 import { DialogService } from 'src/app/services/dialog/dialog.service';
 import { Crisis } from 'src/app/model/crisis';
-import {CRISES} from "../../model/mock-crises";
 
 @Component({
   selector: 'app-crisis-detail',

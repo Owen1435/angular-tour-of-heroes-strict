@@ -6,8 +6,12 @@ import {HeroesComponent} from "../../components/heroes/heroes.component";
 import {HeroDetailComponent} from "../../components/hero-detail/hero-detail.component";
 import {DashboardComponent} from "../../components/dashboard/dashboard.component";
 import {HeroSearchComponent} from "../../components/hero-search/hero-search.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HeroFormComponent} from "../../components/hero-form/hero-form.component";
+import {MatIconModule} from "@angular/material/icon";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -20,7 +24,12 @@ import {HeroFormComponent} from "../../components/hero-form/hero-form.component"
   imports: [
     CommonModule,
     FormsModule,
-    HeroesRoutingModule
+    HeroesRoutingModule,
+    MatIconModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule
   ],
 })
 export class HeroesModule { }

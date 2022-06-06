@@ -8,6 +8,9 @@ import { CrisisDetailComponent } from 'src/app/components/crisis-detail/crisis-d
 import { CrisisListComponent } from 'src/app/components/crisis-list/crisis-list.component';
 import { CrisisCenterRoutingModule } from './crisis-center-routing.module';
 
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+
 @NgModule({
   declarations: [
     CrisisCenterComponent,
@@ -19,6 +22,8 @@ import { CrisisCenterRoutingModule } from './crisis-center-routing.module';
     CommonModule,
     FormsModule,
     CrisisCenterRoutingModule,
+    MatButtonModule,
+    MatInputModule
   ]
 })
 export class CrisisCenterModule { }

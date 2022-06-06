@@ -1,18 +1,25 @@
 <h2>My Heroes</h2>
 
-<div>
-  <input id="new-hero" #heroName placeholder="Hero name"/>
-  <button type="button" class="add-button" (click)="add(heroName.value); heroName.value=''">
+<form class="add-hero-form" [formGroup]="form">
+  <mat-form-field class="field" appearance="fill">
+    <mat-label>Hero name</mat-label>
+    <input matInput formControlName="heroName">
+  </mat-form-field>
+  <button mat-raised-button color="primary" class="add-button"
+          (click)="add()"
+          [disabled]="form.controls['heroName'].invalid">
     Add hero
   </button>
-</div>
+</form>
 
 <ul class="heroes">
   <li *ngFor="let hero of heroes" [class.selected]="hero.id === selectedId">
     <a routerLink="/hero/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
+      <span class="badge">{{hero.id}}</span>
+      {{hero.name}}
     </a>
-    <button type="button" class="delete" title="delete hero"
-            (click)="delete(hero)">x</button>
+    <button type="button" class="delete" title="delete hero" (click)="delete(hero)">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">close</mat-icon>
+    </button>
   </li>
 </ul>

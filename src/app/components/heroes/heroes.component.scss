@@ -3,7 +3,7 @@
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  width: 15em;
+  //width: 15em;
 }
 .heroes li {
   position: relative;
@@ -58,36 +58,33 @@
   border-radius: 4px 0 0 4px;
 }
 
-.add-button {
-  padding: .4rem 1.5rem;
-  font-size: 1rem;
-  margin-bottom: 2rem;
-}
-
-.add-button:hover {
-  color: white;
-  background-color: #42545C;
-}
-
-input {
-  padding: .5rem;
-  margin: 1rem .5rem 1rem 0;
-  box-sizing: border-box;
-}
-
-button.delete {
+.delete {
+  font-size: 0;
   position: absolute;
-  left: 190px;
-  top: 5px;
-  background-color: white;
-  color:  #525252;
-  font-size: 1.1rem;
+  right: 5px;
+  top: 2px;
   margin: 0;
-  padding: 1px 10px 3px 10px;
+  padding: 1px 10px 1px 10px;
   border: none;
+  background-color: transparent;
+
+  &:hover {
+    color: #ff0000;
+  }
 }
 
-button.delete:hover {
-  background-color: #525252;
-  color: white;
+.add-hero-form {
+  display: flex;
+
+  .field {
+    display: block;
+    width: 100%;
+  }
+
+  .add-button {
+    padding: .4rem 1rem;
+    font-size: 1rem;
+    margin: 0 0 0 5px;
+    height: 100%;
+  }
 }

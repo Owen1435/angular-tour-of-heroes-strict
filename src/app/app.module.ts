@@ -16,6 +16,9 @@ import { ComposeMessageComponent } from './components/compose-message/compose-me
 import {AdminModule} from "./modules/admin/admin.module";
 import {AuthModule} from "./modules/auth/auth.module";
 
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from "@angular/material/button";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,8 +38,10 @@ import {AuthModule} from "./modules/auth/auth.module";
     AppRoutingModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService,
-      { dataEncapsulation: false }
+      {dataEncapsulation: false}
     ),
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
