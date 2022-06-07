@@ -3,6 +3,14 @@ import { HeroService } from '../../services/hero/hero.service';
 import { Hero } from '../../model/hero';
 import {ActivatedRoute} from "@angular/router";
 import {FormControl, FormGroup, Validators } from '@angular/forms';
+import {select, Store } from '@ngrx/store';
+import {HeroesState} from "../../reducers/heroes/heroes.reducer";
+import {selectHeroes} from "../../reducers/heroes/heroes.selectors";
+import {
+  AddHeroRequestAction,
+  DeleteHeroRequestAction,
+  GetHeroesRequestAction
+} from "../../reducers/heroes/heroes.actions";
 
 @Component({
   selector: 'app-heroes',
@@ -12,28 +20,28 @@ import {FormControl, FormGroup, Validators } from '@angular/forms';
 export class HeroesComponent implements OnInit {
   public heroes: Hero[] = [];
   public selectedId: number = 0;
-  form : FormGroup = new FormGroup({});
+  public form : FormGroup = new FormGroup({});
 
   constructor(
     private heroService: HeroService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private store: Store<HeroesState>,
   ) {
+    this.store.pipe(select(selectHeroes)).subscribe(heroes => {
+      this.heroes = heroes
+    });
     this.form = new FormGroup({
-      "heroName": new FormControl('fsdfsf', [Validators.required]),
+      "heroName": new FormControl('', [Validators.required]),
     });
   }
 
   ngOnInit(): void {
-    this.route.data
-      .subscribe((response: any) => {
-        this.heroes = response.heroes;
-      })
-
     this.route.paramMap
       .subscribe(params => {
         this.selectedId = Number(params.get('id'));
-        console.log(this.selectedId);
       })
+
+    this.store.dispatch(new GetHeroesRequestAction())
   }
 
   add(): void {
@@ -41,16 +49,13 @@ export class HeroesComponent implements OnInit {
     if (!name) {
       return;
     }
-    this.heroService.addHero({ name } as Hero)
-      .subscribe(hero => {
-        this.heroes.push(hero);
-      });
+    const newHero = { name } as Hero
+    this.store.dispatch(new AddHeroRequestAction({hero: newHero}))
 
     this.form.reset()
   }
 
   delete(hero: Hero): void {
-    this.heroes = this.heroes.filter(h => h !== hero);
-    this.heroService.deleteHero(hero.id).subscribe();
+    this.store.dispatch(new DeleteHeroRequestAction({id: hero.id}))
   }
 }

@@ -12,6 +12,10 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
+import { StoreModule } from '@ngrx/store';
+import {heroesNode, heroesReducer} from "../../reducers/heroes/heroes.reducer";
+import { EffectsModule } from '@ngrx/effects';
+import {HeroesEffects} from "../../reducers/heroes/heroes.effects";
 
 @NgModule({
   declarations: [
@@ -29,7 +33,9 @@ import {MatButtonModule} from "@angular/material/button";
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    StoreModule.forFeature(heroesNode, heroesReducer),
+    EffectsModule.forFeature([HeroesEffects]),
   ],
 })
 export class HeroesModule { }

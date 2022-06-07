@@ -8,7 +8,7 @@ import {DashboardComponent} from "../../components/dashboard/dashboard.component
 
 const routes: Routes = [
   { path: 'hero/:id', component: HeroDetailComponent, resolve: { hero: HeroService }, data: { animation: 'hero' }  },
-  { path: 'heroes', component: HeroesComponent, resolve: { heroes: HeroesResolver }, data: { animation: 'heroes' }  },
+  { path: 'heroes', component: HeroesComponent, data: { animation: 'heroes' }  },
   { path: 'dashboard', component: DashboardComponent, resolve: { heroes: HeroesResolver } },
 ];
 
