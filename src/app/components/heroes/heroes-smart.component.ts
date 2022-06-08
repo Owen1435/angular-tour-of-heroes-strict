@@ -13,11 +13,18 @@ import {
 } from "../../reducers/heroes/heroes.actions";
 
 @Component({
-  selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
+  template: `
+      <app-heroes-presentation
+      [heroes]="heroes"
+      [selectedId]="selectedId"
+      (addHero)="addHero($event)"
+      (deleteHero)="deleteHero($event)"
+    >
+    </app-heroes-presentation>
+  `,
   styleUrls: ['./heroes.component.scss']
 })
-export class HeroesComponent implements OnInit {
+export class HeroesSmartComponent implements OnInit {
   public heroes: Hero[] = [];
   public selectedId: number = 0;
   public form : FormGroup = new FormGroup({});
@@ -44,18 +51,12 @@ export class HeroesComponent implements OnInit {
     this.store.dispatch(new GetHeroesRequestAction())
   }
 
-  add(): void {
-    const name = this.form.controls['heroName'].value.trim()
-    if (!name) {
-      return;
-    }
-    const newHero = { name } as Hero
+  addHero(heroName: string): void {
+    const newHero = { name: heroName } as Hero
     this.store.dispatch(new AddHeroRequestAction({hero: newHero}))
-
-    this.form.reset()
   }
 
-  delete(hero: Hero): void {
-    this.store.dispatch(new DeleteHeroRequestAction({id: hero.id}))
+  deleteHero(heroId: number): void {
+    this.store.dispatch(new DeleteHeroRequestAction({id: heroId}))
   }
 }

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HeroesRoutingModule } from './heroes-routing.module';
-import {HeroesComponent} from "../../components/heroes/heroes.component";
 import {HeroDetailComponent} from "../../components/hero-detail/hero-detail.component";
 import {DashboardComponent} from "../../components/dashboard/dashboard.component";
 import {HeroSearchComponent} from "../../components/hero-search/hero-search.component";
@@ -16,10 +15,13 @@ import { StoreModule } from '@ngrx/store';
 import {heroesNode, heroesReducer} from "../../reducers/heroes/heroes.reducer";
 import { EffectsModule } from '@ngrx/effects';
 import {HeroesEffects} from "../../reducers/heroes/heroes.effects";
+import {HeroesPresentationComponent} from "../../components/heroes/heroes-presentation.component";
+import {HeroesSmartComponent} from "../../components/heroes/heroes-smart.component";
 
 @NgModule({
   declarations: [
-    HeroesComponent,
+    HeroesPresentationComponent,
+    HeroesSmartComponent,
     HeroDetailComponent,
     DashboardComponent,
     HeroSearchComponent,
@@ -29,13 +31,13 @@ import {HeroesEffects} from "../../reducers/heroes/heroes.effects";
     CommonModule,
     FormsModule,
     HeroesRoutingModule,
-    MatIconModule,
-    MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule,
-    MatButtonModule,
     StoreModule.forFeature(heroesNode, heroesReducer),
     EffectsModule.forFeature([HeroesEffects]),
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
   ],
 })
 export class HeroesModule { }
