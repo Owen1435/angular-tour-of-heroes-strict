@@ -6,15 +6,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { InMemoryDataService } from './services/in-memory-data/in-memory-data.service';
+import { NotFoundComponent } from './common/components/not-found/not-found.component';
+import { InMemoryDataService } from './common/services/in-memory-data.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { HeroesModule } from './modules/heroes/heroes.module';
-import { MessagesComponent } from './components/messages/messages.component';
-import {CrisisCenterModule} from "./modules/crisis-center/crisis-center.module";
-import { ComposeMessageComponent } from './components/compose-message/compose-message.component';
-import {AdminModule} from "./modules/admin/admin.module";
-import {AuthModule} from "./modules/auth/auth.module";
 
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from "@angular/material/button";
@@ -23,19 +17,23 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { HeroesModule } from './modules/heroes/heroes.module';
+import { CrisisCenterModule } from './modules/crisis-center/crisis-center.module';
+import { AdminModule } from './modules/admin/admin.module';
+import { AuthModule } from './modules/auth/auth.module';
+import {MessageModule} from "./modules/message/message.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
-    MessagesComponent,
-    ComposeMessageComponent,
   ],
   imports: [
     HeroesModule,
     CrisisCenterModule,
     AdminModule,
     AuthModule,
+    MessageModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,

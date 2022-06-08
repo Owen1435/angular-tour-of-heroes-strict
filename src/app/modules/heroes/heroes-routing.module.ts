@@ -1,15 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {HeroDetailComponent} from "../../components/hero-detail/hero-detail.component";
-import {HeroService} from "../../services/hero/hero.service";
-import {HeroesResolver} from "../../components/heroes/heroes.resolver";
-import {DashboardComponent} from "../../components/dashboard/dashboard.component";
-import {HeroesSmartComponent} from "../../components/heroes/heroes-smart.component";
+
+import {HeroDetailComponent} from "./components/hero-detail/hero-detail.component";
+import {DashboardResolver} from "./resolvers/dashboard.resolver";
+import {HeroesPageSmartComponent} from "./components/heroes-page/heroes-page-smart.component";
+import {HeroDetailResolver} from "./resolvers/hero-detail.resolver";
+import { DashboardPageComponent } from './components/dashboard-page/dashboard-page.component';
 
 const routes: Routes = [
-  { path: 'hero/:id', component: HeroDetailComponent, resolve: { hero: HeroService }, data: { animation: 'hero' }  },
-  { path: 'heroes', component: HeroesSmartComponent, data: { animation: 'heroes' }  },
-  { path: 'dashboard', component: DashboardComponent, resolve: { heroes: HeroesResolver } },
+  {
+    path: 'heroes',
+    component: HeroesPageSmartComponent,
+    data: { animation: 'heroes' }
+  },
+  {
+    path: 'hero/:id',
+    component: HeroDetailComponent,
+    resolve: { hero: HeroDetailResolver },
+    data: { animation: 'hero' }
+  },
+  {
+    path: 'dashboard',
+    component: DashboardPageComponent,
+    resolve: { heroes: DashboardResolver }
+  },
 ];
 
 @NgModule({

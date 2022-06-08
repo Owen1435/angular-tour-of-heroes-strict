@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, UrlTree, NavigationExtras } from '@angular/router';
 
-import {AuthService} from "../services/auth/auth.service";
+import {AuthService} from "../modules/auth/services/auth.service";
 
 @Injectable({
   providedIn: 'root',
@@ -33,7 +33,7 @@ export class AuthGuard implements CanActivate {
       queryParams: { session_id: sessionId },
       fragment: 'anchor'
     };
-    
+
     return this.router.createUrlTree(['/login'], navigationExtras);
   }
 }
