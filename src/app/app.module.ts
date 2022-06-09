@@ -17,11 +17,11 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { HeroesModule } from './modules/heroes/heroes.module';
-import { CrisisCenterModule } from './modules/crisis-center/crisis-center.module';
-import { AdminModule } from './modules/admin/admin.module';
-import { AuthModule } from './modules/auth/auth.module';
-import {MessageModule} from "./modules/message/message.module";
+import { HeroesModule } from './heroes/heroes.module';
+import { CrisisCenterModule } from './crisis-center/crisis-center.module';
+import { AdminModule } from './admin/admin.module';
+import { AuthModule } from './auth/auth.module';
+import {MessageModule} from "./message/message.module";
 
 @NgModule({
   declarations: [
