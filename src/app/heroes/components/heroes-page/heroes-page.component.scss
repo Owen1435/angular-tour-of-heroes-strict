@@ -3,22 +3,22 @@
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  //width: 15em;
-}
-.heroes li {
-  position: relative;
-  cursor: pointer;
-  margin: .5em;
-  background-color: #EEE;
-  border-radius: 4px;
 
-  &.selected {
-    background-color: rgba(37, 37, 255, 0.43);
+  li {
+    position: relative;
+    cursor: pointer;
+    margin: .5em;
+    background-color: #EEE;
+    border-radius: 4px;
+
+    &.selected {
+      background-color: rgba(37, 37, 255, 0.43);
+    }
+
+    &:hover {
+      left: .1em;
+    }
   }
-}
-
-.heroes li:hover {
-  left: .1em;
 }
 
 .heroes a {
@@ -29,33 +29,30 @@
   border-radius: 4px;
   display: block;
   width: 100%;
-}
 
-.heroes a:hover {
-  color: #2c3a41;
-  background-color: #e6e6e6;
-}
+  &:hover {
+    color: #2c3a41;
+    background-color: #e6e6e6;
+  }
 
-.heroes a:active {
-  background-color: #525252;
-  color: #fafafa;
+  &:active {
+    background-color: #525252;
+    color: #fafafa;
+  }
 }
 
 .heroes .badge {
   display: inline-block;
   font-size: small;
   color: white;
-  padding: 0.8em 0.7em 0 0.7em;
   background-color: #405061;
-  line-height: 1em;
-  position: relative;
-  left: -1px;
-  top: -4px;
-  height: 1.8em;
-  min-width: 16px;
-  text-align: right;
-  margin-right: .8em;
+  height: calc(100% + .6em);
   border-radius: 4px 0 0 4px;
+  padding: 0 0.7em;
+  margin-right: .8em;
+  position: relative;
+  top: -0.3em;
+  text-align: center;
 }
 
 .delete {
