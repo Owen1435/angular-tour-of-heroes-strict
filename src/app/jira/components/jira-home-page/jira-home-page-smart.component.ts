@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {AddTaskRequestDto} from "../../model/add-task.request.dto";
 import {select, Store} from "@ngrx/store";
@@ -16,6 +16,7 @@ import { Observable } from 'rxjs/internal/Observable';
     >
     </app-jira-home-page-presentation>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class JiraHomePageSmartComponent{
 

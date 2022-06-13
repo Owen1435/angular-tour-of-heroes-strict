@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {TasksService} from "../../services/tasks.service";
 import {Observable} from "rxjs/internal/Observable";
 import {Task} from "../../model/task";
@@ -15,7 +15,8 @@ import {
 @Component({
   selector: 'app-kanban-board',
   templateUrl: './kanban-board.component.html',
-  styleUrls: ['./kanban-board.component.scss']
+  styleUrls: ['./kanban-board.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class KanbanBoardComponent implements OnInit {
 

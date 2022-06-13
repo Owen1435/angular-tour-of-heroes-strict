@@ -1,10 +1,11 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Task} from "../../model/task";
 
 @Component({
   selector: 'app-board-column',
   templateUrl: './board-column.component.html',
-  styleUrls: ['./board-column.component.scss']
+  styleUrls: ['./board-column.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BoardColumnComponent {
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {AddTaskDialogComponent} from "../add-task-dialog/add-task-dialog.component";
 import {MatDialog} from '@angular/material/dialog';
 import {AddTaskRequestDto} from "../../model/add-task.request.dto";
@@ -6,7 +6,8 @@ import {AddTaskRequestDto} from "../../model/add-task.request.dto";
 @Component({
   selector: 'app-jira-home-page-presentation',
   templateUrl: './jira-home-page.component.html',
-  styleUrls: ['./jira-home-page.component.scss']
+  styleUrls: ['./jira-home-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class JiraHomePagePresentationComponent{
 

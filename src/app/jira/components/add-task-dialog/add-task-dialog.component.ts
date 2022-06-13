@@ -1,4 +1,4 @@
-import {Component, Inject,} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject,} from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AddTaskRequestDto} from "../../model/add-task.request.dto";
@@ -6,7 +6,8 @@ import {AddTaskRequestDto} from "../../model/add-task.request.dto";
 @Component({
   selector: 'app-add-task-dialog',
   templateUrl: './add-task-dialog.component.html',
-  styleUrls: ['./add-task-dialog.component.scss']
+  styleUrls: ['./add-task-dialog.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddTaskDialogComponent{
   public submitFunc: ((task: AddTaskRequestDto) => void) | undefined;
