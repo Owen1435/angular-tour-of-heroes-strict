@@ -6,7 +6,11 @@ import {map} from "rxjs/operators";
 import {select, Store} from "@ngrx/store";
 import {JiraPageState} from "../../state-management/jira-page.reducer";
 import {statusesSelector, tasksSelector} from "../../state-management/jira-page.selectors";
-import {GetTasksRequestAction} from "../../state-management/jira-page.actions";
+import {
+  GetTasksRequestAction,
+  UpdateTaskAction,
+  UpdateTaskRequestAction
+} from "../../state-management/jira-page.actions";
 
 @Component({
   selector: 'app-kanban-board',
@@ -34,5 +38,18 @@ export class KanbanBoardComponent implements OnInit {
     return this.tasks$.pipe(
       map(tasks => tasks.filter(task => task.status === status))
     )
+  }
+
+  dropTask(event: any) {
+    if (event.container.data === event.previousContainer.data) {
+      return
+    }
+
+    const updatedTask: Task = {
+      ...event.item.data,
+      status: event.container.data
+    }
+    this.store.dispatch(new UpdateTaskAction({task: updatedTask})) //todo ?
+    this.store.dispatch(new UpdateTaskRequestAction({task: updatedTask}))
   }
 }

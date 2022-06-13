@@ -2,6 +2,7 @@
   <app-board-column *ngFor="let status of statuses$ | async"
                     [title]="status"
                     [tasks]="(getTasksForStatus(status) | async)!"
+                    (dropTask)="dropTask($event)"
   >
   </app-board-column>
 </div>

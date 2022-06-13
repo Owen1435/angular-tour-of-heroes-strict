@@ -2,7 +2,7 @@
   <div class="title">
     {{title | uppercase}}
   </div>
-  <div class="list" cdkDropList [cdkDropListData]="title" (cdkDropListDropped)="drop($event)">
+  <div class="list" cdkDropList [cdkDropListData]="title" (cdkDropListDropped)="dropTask.emit($event)">
     <app-task *ngFor="let task of tasks" [task]="task">></app-task>
   </div>
 </div>
