@@ -22,6 +22,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {ScrollingModule} from "@angular/cdk/scrolling";
 import {JiraHomePageSmartComponent} from "./components/jira-home-page/jira-home-page-smart.component";
 import {JiraHomePagePresentationComponent} from "./components/jira-home-page/jira-home-page-presentation.component";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import {JiraHomePagePresentationComponent} from "./components/jira-home-page/jir
     MatIconModule,
     MatSelectModule,
     ScrollingModule,
+    MatCardModule,
   ],
   providers: [
     TasksService

@@ -1,6 +1,7 @@
 <div class="board-column">
   <div class="title">
     {{title | uppercase}}
+    <div class="tasks-count">{{tasks.length}}</div>
   </div>
   <div class="list" cdkDropList [cdkDropListData]="title" (cdkDropListDropped)="dropTask.emit($event)">
     <app-task *ngFor="let task of tasks" [task]="task">></app-task>
