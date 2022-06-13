@@ -5,9 +5,23 @@
   background: white;
   margin: 5px;
   padding: 5px;
+  display: flex;
 
   &:hover {
     background-color: rgba(63, 82, 92, 0.2);
+  }
+
+  .delete {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    font-size: 0;
+    display: block;
+    margin-left: auto;
+
+    &:hover {
+      color: red;
+    }
   }
 }
 

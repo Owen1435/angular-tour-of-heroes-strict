@@ -4,7 +4,7 @@ import {catchError, map, mergeMap} from 'rxjs/operators';
 import { of } from 'rxjs';
 import {TasksService} from "../services/tasks.service";
 import {
-  AddTaskRequestAction,
+  AddTaskRequestAction, DeleteTaskRequestAction,
   GetTasksRequestAction,
   jiraPageActionsType,
   SetTasksAction,
@@ -48,6 +48,17 @@ export class JiraPageEffects {
       map((task) => {
         return new GetTasksRequestAction()
         // return new AddTaskAction({task})
+      }),
+      catchError(() => of({ type: 'something was wrong' }))
+    )),
+  ))
+
+  deleteTask$ = createEffect(() => this.actions$.pipe(
+    ofType<DeleteTaskRequestAction>(jiraPageActionsType.DELETE_TASK_REQUEST),
+    map(action => action.payload),
+    mergeMap((payload) => this.tasksService.deleteTask(payload.taskId).pipe(
+      map((task) => {
+        return new GetTasksRequestAction()
       }),
       catchError(() => of({ type: 'something was wrong' }))
     )),

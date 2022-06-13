@@ -5,10 +5,11 @@ import {AddTaskRequestDto} from "../model/add-task.request.dto";
 export enum jiraPageActionsType {
   GET_TASKS_REQUEST = '[jira-page] GET_TASKS_REQUEST',
   SET_TASKS = '[jira-page] SET_TASKS',
-  UPDATE_TASK = '[jira-page] UPDATE_TASK',
   UPDATE_TASK_REQUEST = '[jira-page] UPDATE_TASK_REQUEST',
+  UPDATE_TASK = '[jira-page] UPDATE_TASK',
   ADD_TASK_REQUEST = '[jira-page] ADD_TASK_REQUEST',
   ADD_TASK = '[jira-page] ADD_TASK',
+  DELETE_TASK_REQUEST = '[jira-page] DELETE_TASK_REQUEST',
 }
 
 export class GetTasksRequestAction implements Action {
@@ -50,6 +51,13 @@ export class AddTaskAction implements Action {
   }) {}
 }
 
+export class DeleteTaskRequestAction implements Action {
+  readonly type = jiraPageActionsType.DELETE_TASK_REQUEST;
+  constructor(public payload: {
+    taskId: number;
+  }) {}
+}
+
 export type JiraPageActions
   = SetTasksAction
   | GetTasksRequestAction
@@ -57,3 +65,4 @@ export type JiraPageActions
   | UpdateTaskRequestAction
   | AddTaskRequestAction
   | AddTaskAction
+  | DeleteTaskRequestAction

@@ -1,3 +1,6 @@
 <div class="task" *ngIf="task" cdkDrag [cdkDragData]="task">
   {{task.id}} {{task.title}}
+  <button type="button" class="delete" title="delete task" (click)="deleteTask(task)">
+    <mat-icon>close</mat-icon>
+  </button>
 </div>
