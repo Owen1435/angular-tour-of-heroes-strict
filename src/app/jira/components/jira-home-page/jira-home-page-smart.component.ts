@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {AddTaskDialogComponent} from "../add-task-dialog/add-task-dialog.component";
 import {MatDialog} from '@angular/material/dialog';
 import {AddTaskRequestDto} from "../../model/add-task.request.dto";
 import {select, Store} from "@ngrx/store";
@@ -9,11 +8,16 @@ import {statusesSelector} from "../../state-management/jira-page.selectors";
 import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
-  selector: 'app-jira-home-page',
-  templateUrl: './jira-home-page.component.html',
-  styleUrls: ['./jira-home-page.component.scss']
+  selector: 'app-jira-home-page-smart',
+  template: `
+    <app-jira-home-page-presentation
+      [statuses]="(statuses$ | async)!"
+      (addTask)="addTask($event)"
+    >
+    </app-jira-home-page-presentation>
+  `,
 })
-export class JiraHomePageComponent{
+export class JiraHomePageSmartComponent{
 
   statuses$: Observable<string[]>
 
@@ -24,17 +28,7 @@ export class JiraHomePageComponent{
     this.statuses$ = this.store.pipe(select(statusesSelector))
   }
 
-  openAddTaskDialog() {
-    const addTask = (task: AddTaskRequestDto) => {
-      this.store.dispatch(new AddTaskRequestAction({task}))
-    }
-
-    this.dialog.open(AddTaskDialogComponent, {
-      minWidth: '300px',
-      data: {
-        submitFunc: addTask,
-        availableStatuses$: this.statuses$
-      },
-    });
+  addTask(task: AddTaskRequestDto) {
+    this.store.dispatch(new AddTaskRequestAction({task}))
   }
 }

@@ -7,7 +7,7 @@
   <mat-form-field appearance="fill">
     <mat-label>Status</mat-label>
     <mat-select formControlName="status">
-      <mat-option *ngFor="let status of availableStatuses$ | async" [value]="status">
+      <mat-option *ngFor="let status of statuses" [value]="status">
         {{status}}
       </mat-option>
     </mat-select>

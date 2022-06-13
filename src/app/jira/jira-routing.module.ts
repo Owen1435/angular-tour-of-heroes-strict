@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {JiraHomePageComponent} from "./components/jira-home-page/jira-home-page.component";
+import {JiraHomePageSmartComponent} from "./components/jira-home-page/jira-home-page-smart.component";
 
 const routes: Routes = [
   {
     path: 'jira',
-    component: JiraHomePageComponent
+    component: JiraHomePageSmartComponent
   }
 ];
 

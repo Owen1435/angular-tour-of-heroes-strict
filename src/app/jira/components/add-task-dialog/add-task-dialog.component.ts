@@ -2,7 +2,6 @@ import {Component, Inject,} from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AddTaskRequestDto} from "../../model/add-task.request.dto";
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-task-dialog',
@@ -11,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class AddTaskDialogComponent{
   public submitFunc: ((task: AddTaskRequestDto) => void) | undefined;
-  public availableStatuses$: Observable<string[]> | undefined
+  public statuses: string[] | undefined
   public form : FormGroup = new FormGroup({});
 
   constructor(
@@ -24,7 +23,7 @@ export class AddTaskDialogComponent{
     });
     if (data) {
       this.submitFunc = data.submitFunc;
-      this.availableStatuses$ = data.availableStatuses$;
+      this.statuses = data.statuses;
     }
   }
 
