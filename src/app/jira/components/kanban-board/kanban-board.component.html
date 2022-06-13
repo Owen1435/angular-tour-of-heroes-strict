@@ -1,0 +1,7 @@
+<div class="kanban-board" cdkDropListGroup>
+  <app-board-column *ngFor="let status of statuses$ | async"
+                    [title]="status"
+                    [tasks]="(getTasksForStatus(status) | async)!"
+  >
+  </app-board-column>
+</div>

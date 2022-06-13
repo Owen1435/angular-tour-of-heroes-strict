@@ -1,0 +1,42 @@
+import {Component, Inject,} from '@angular/core';
+import {MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AddTaskRequestDto} from "../../model/add-task.request.dto";
+import { Observable } from 'rxjs';
+
+@Component({
+  selector: 'app-add-task-dialog',
+  templateUrl: './add-task-dialog.component.html',
+  styleUrls: ['./add-task-dialog.component.scss']
+})
+export class AddTaskDialogComponent{
+  public submitFunc: ((task: AddTaskRequestDto) => void) | undefined;
+  public availableStatuses$: Observable<string[]> | undefined
+  public form : FormGroup = new FormGroup({});
+
+  constructor(
+    public dialogRef: MatDialogRef<AddTaskDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.form = new FormGroup({
+      "title": new FormControl('', [Validators.required]),
+      "status": new FormControl('backlog', [Validators.required]),
+    });
+    if (data) {
+      this.submitFunc = data.submitFunc;
+      this.availableStatuses$ = data.availableStatuses$;
+    }
+  }
+
+  onSubmit() {
+    if (this.submitFunc) {
+      const newTask: AddTaskRequestDto = {
+        title: this.form.get('title')?.value,
+        status: this.form.get('status')?.value,
+        order: 1
+      }
+      this.submitFunc(newTask)
+      this.dialogRef.close();
+    }
+  }
+}

@@ -22,6 +22,7 @@ import { CrisisCenterModule } from './crisis-center/crisis-center.module';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import {MessageModule} from "./message/message.module";
+import {JiraModule} from "./jira/jira.module";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {MessageModule} from "./message/message.module";
     AdminModule,
     AuthModule,
     MessageModule,
+    JiraModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,

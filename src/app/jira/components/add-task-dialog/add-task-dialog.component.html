@@ -1,0 +1,21 @@
+<h2>Add new task</h2>
+<form class="add-task-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field class="field" appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option *ngFor="let status of availableStatuses$ | async" [value]="status">
+        {{status}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" class="add-button"
+          type="submit"
+          [disabled]="form.invalid">
+    Add task
+  </button>
+</form>

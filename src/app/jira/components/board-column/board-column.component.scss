@@ -1,0 +1,28 @@
+:host {
+  flex: 1;
+}
+
+.board-column {
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-right: 10px;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    padding: 5px;
+    font-weight: 700;
+  }
+
+  .list {
+    min-height: 20px;
+    flex: 1;
+  }
+}
+
+.cdk-drop-list-dragging {
+  background: rgba(0, 255, 0, 0.29);
+}
