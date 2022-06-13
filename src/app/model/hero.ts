@@ -3,3 +3,8 @@ export interface Hero {
   name: string;
   power?: string
 }
+
+export interface AddHeroDto {
+  name: string;
+  power?: string
+}

@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
-import { Hero } from '../../model/hero';
+import {AddHeroDto, Hero} from '../../model/hero';
 import {MessageService} from "../../common/services/message.service";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';
 
 @Injectable()
 export class HeroService {
-  private heroesUrl = 'api/heroes';
+  public heroesUrl = 'api/heroes';
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -41,7 +41,7 @@ export class HeroService {
     );
   }
 
-  addHero(hero: Hero): Observable<Hero> {
+  addHero(hero: AddHeroDto): Observable<Hero> {
     return this.http.post<Hero>(this.heroesUrl, hero, this.httpOptions).pipe(
       tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.id}`)),
       catchError(this.handleError<Hero>('addHero'))
