@@ -4,7 +4,7 @@ import { HeroFormComponent } from './hero-form.component';
 import {FormsModule} from "@angular/forms";
 import {HeroService} from "../../services/hero.service";
 import {RouterTestingModule} from "@angular/router/testing";
-import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 import { of } from 'rxjs';
 
 describe('HeroFormComponent', () => {
@@ -26,7 +26,7 @@ describe('HeroFormComponent', () => {
       providers: [
         { provide: HeroService, useValue: mockHeroService }
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   });
@@ -37,6 +37,7 @@ describe('HeroFormComponent', () => {
 
     component.hero = inputHero
 
+    mockHeroService.updateHero.calls.reset()
     fixture.detectChanges();
   });
 

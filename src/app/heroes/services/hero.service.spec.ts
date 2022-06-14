@@ -14,7 +14,6 @@ describe('HeroService', () => {
     { id: 3, name: 'Celeritas' },
   ];
 
-  // const mockMessageService = jasmine.createSpyObj(['add'])
   const mockMessageService = {
     add: jasmine.createSpy('add')
   }
@@ -103,6 +102,26 @@ describe('HeroService', () => {
     const req = http.expectOne( `${service.heroesUrl}/${deleteHeroId}`);
     expect(req.request.method).toEqual('DELETE');
     req.flush(deletedHero);
+  });
+
+  it('searchHeroes should be return searched hero', () => {
+    const term = 'term';
+
+    service.searchHeroes(term).subscribe(heroes => {
+      expect(heroes).toEqual(expectedData);
+    })
+
+    const req = http.expectOne( `${service.heroesUrl}/?name=${term}`);
+    expect(req.request.method).toEqual('GET');
+    req.flush(expectedData);
+  });
+
+  it('searchHeroes not should be return searched hero', () => {
+    const term = '';
+
+    service.searchHeroes(term).subscribe(heroes => {
+      expect(heroes).toEqual([]);
+    })
   });
 
   it('getHeroes should be call add method from message service', () => {
