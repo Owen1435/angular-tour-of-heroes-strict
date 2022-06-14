@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../../../model/hero';
 import {ActivatedRoute} from "@angular/router";
-import { HeroService } from '../../services/hero.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +11,6 @@ export class DashboardPageComponent implements OnInit {
   public heroes: Hero[] = [];
 
   constructor(
-    private heroService: HeroService,
     private route: ActivatedRoute
   ) { }
 
