@@ -3,10 +3,6 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import {HeroService} from "./hero.service";
 import {MessageService} from "../../common/services/message.service";
 
-const mockMessageService = {
-  add(message: string): void {}
-}
-
 describe('HeroService', () => {
   let service: HeroService;
   let messageService: MessageService;
@@ -17,6 +13,11 @@ describe('HeroService', () => {
     { id: 2, name: 'Bombasto' },
     { id: 3, name: 'Celeritas' },
   ];
+
+  // const mockMessageService = jasmine.createSpyObj(['add'])
+  const mockMessageService = {
+    add: jasmine.createSpy('add')
+  }
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -29,13 +30,14 @@ describe('HeroService', () => {
       ]
     });
 
-    service = TestBed.get(HeroService);
-    messageService = TestBed.get(MessageService);
-    http = TestBed.get(HttpTestingController);
+    http = TestBed.inject(HttpTestingController);
+    service = TestBed.inject(HeroService);
+    messageService = TestBed.inject(MessageService);
   });
 
   afterEach(() => {
     http.verify();
+    mockMessageService.add.calls.reset()
   });
 
   it('service should be created', () => {
@@ -104,60 +106,51 @@ describe('HeroService', () => {
   });
 
   it('getHeroes should be call add method from message service', () => {
-    const spyAdd = spyOn(messageService, "add")
     service.getHeroes().subscribe()
 
     const req = http.expectOne(service.heroesUrl);
     req.flush({});
 
-    expect(spyAdd).toHaveBeenCalledTimes(1)
+    expect(mockMessageService.add).toHaveBeenCalledTimes(1)
   });
 
-  it('getHero should be call add method from message serviced', () => {
+  it('getHero should call add method from message serviced', () => {
     const heroId = 1;
-
-    const spyAdd = spyOn(messageService, "add")
     service.getHero(heroId).subscribe()
 
     const req = http.expectOne(`${service.heroesUrl}/${heroId}`);
     req.flush({});
 
-    expect(spyAdd).toHaveBeenCalledTimes(1)
+    expect(mockMessageService.add).toHaveBeenCalledTimes(1)
   });
 
-  it('updateHero should be call add method from message serviced', () => {
+  it('updateHero should call add method from message serviced', () => {
     const updateHeroDto = { id: 1, name: 'Dr. Nice v2' };
-
-    const spyAdd = spyOn(messageService, "add")
     service.updateHero(updateHeroDto).subscribe()
 
     const req = http.expectOne(service.heroesUrl);
     req.flush({});
 
-    expect(spyAdd).toHaveBeenCalledTimes(1)
+    expect(mockMessageService.add).toHaveBeenCalledTimes(1)
   });
 
-  it('addHero should be call add method from message serviced', () => {
+  it('addHero should call add method from message serviced', () => {
     const addHeroDto = { name: 'Celeritas' }
-
-    const spyAdd = spyOn(messageService, "add")
     service.addHero(addHeroDto).subscribe()
 
     const req = http.expectOne(service.heroesUrl);
     req.flush({});
 
-    expect(spyAdd).toHaveBeenCalledTimes(1)
+    expect(mockMessageService.add).toHaveBeenCalledTimes(1)
   });
 
-  it('deleteHero  should be call add method from message serviced', () => {
+  it('deleteHero should call add method from message serviced', () => {
     const deleteHeroId = 1;
-
-    const spyAdd = spyOn(messageService, "add")
     service.deleteHero(deleteHeroId).subscribe()
 
     const req = http.expectOne( `${service.heroesUrl}/${deleteHeroId}`);
     req.flush({});
 
-    expect(spyAdd).toHaveBeenCalledTimes(1)
+    expect(mockMessageService.add).toHaveBeenCalledTimes(1)
   });
 });
