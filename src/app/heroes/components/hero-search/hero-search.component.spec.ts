@@ -1,14 +1,32 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import { HeroSearchComponent } from './hero-search.component';
+import {HeroService} from "../../services/hero.service";
+import {Observable} from "rxjs/internal/Observable";
+import {Hero} from "../../../model/hero";
+import { of } from 'rxjs';
+
+const mockHeroes: Hero[] = [
+  { id: 1, name: 'Dr. Nice' },
+  { id: 2, name: 'Bombasto' },
+  { id: 3, name: 'Celeritas' },
+];
+
+const mockHeroService = {
+  searchHeroes: (term: string): Observable<Hero[]> => {
+    return of(mockHeroes)
+  }
+}
 
 describe('HeroSearchComponent', () => {
   let component: HeroSearchComponent;
   let fixture: ComponentFixture<HeroSearchComponent>;
+  let heroService: HeroService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeroSearchComponent ]
+      declarations: [ HeroSearchComponent ],
+      providers: [{ provide: HeroService, useValue: mockHeroService }]
     })
     .compileComponents();
   });
@@ -16,10 +34,21 @@ describe('HeroSearchComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HeroSearchComponent);
     component = fixture.componentInstance;
+    heroService = TestBed.inject(HeroService);
+
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('component should be created', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('search method should return searched hero',(done) => {
+    component.heroes$.subscribe(heroes => {
+        expect(heroes).toEqual(mockHeroes)
+        done()
+      }
+    )
+    component.search('term')
   });
 });

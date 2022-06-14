@@ -19,5 +19,4 @@ export class HeroDetailComponent implements OnInit {
       this.hero = response.hero;
     })
   }
-
 }
